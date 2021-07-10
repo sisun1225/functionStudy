@@ -67,7 +67,6 @@ public class ExcelController {
 	
 	@RequestMapping(value = "/excelTest2", method =  RequestMethod.GET)
 	public String test2() {
-		
 		return "excelTest";
 	}
 	
