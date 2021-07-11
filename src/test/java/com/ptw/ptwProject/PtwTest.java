@@ -2,7 +2,6 @@ package com.ptw.ptwProject;
 
 import java.util.stream.IntStream;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -16,9 +15,9 @@ public class PtwTest {
 	@Autowired
 	ExcelRepository excelrepo;
 
-	@Test
+	//@Test
 	public void insertCompany() {
-		IntStream.range(0,2).forEach(i->{
+		IntStream.range(3,101).forEach(i->{
 			ExportExcel b = new ExportExcel();
 			b.setCompanyNo(1L+i);
 			b.setCompany("회사이름" + i);
