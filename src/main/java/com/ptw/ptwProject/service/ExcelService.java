@@ -3,7 +3,6 @@ package com.ptw.ptwProject.service;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -34,7 +33,7 @@ public class ExcelService {
 		
 		//배경색넣기
 		cellStyle.setFillForegroundColor(IndexedColors.YELLOW.getIndex());
-		cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+		cellStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
 		//setFillForegroundColor ​속성만 해줘서는 안되고 setFillPattern SOLID_FOREGROUND 속성을 지정해줘야한다..
 
 
