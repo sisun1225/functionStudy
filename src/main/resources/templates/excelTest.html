@@ -2,36 +2,29 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>태웅 테스트</title>
 </head>
 <body>
 
-<h1>test</h1>
-
-
-	<!-- 엑셀 다운용 코드 -->
-
-		<h3><a th:href="@{/exceldownload}">엑셀저장</a></h3>
+<h2>엑셀 출력 테스트</h2>
 	
-	<!-- 엑셀 다운용 코드 끝-->
+		<!-- 엑셀 다운용 코드 -->
+		<h3><a th:href="@{/exceldownload}">엑셀저장</a></h3>
+		<!-- 엑셀 다운용 코드 끝-->
 
-	<table border = "1px">
+	<table border = "1">
 		<tr>
 			<th>회사번호</th>
 			<th>회사명</th>
 			<th>전화번호</th>
 			<th>주소</th>
-
 		</tr>
 		<tr th:each="company:${excellist}">
 			<td th:text="${company.companyNo}"></td>
 			<td th:text="${company.company}"></td>
 			<td th:text="${company.phone}"></td>
 			<td th:text="${company.address}"></td>
-
-
 		</tr>
-
 	</table>
 
 
