@@ -25,7 +25,7 @@ public class ExcelController {
 	@Autowired
 	ExcelService excelservice;
 	
-
+ 
 	@RequestMapping("/excelTest")
 	public void adminList(Model model, HttpServletRequest request) {
 		List<ExportExcel> result = excelservice.selectAll();
