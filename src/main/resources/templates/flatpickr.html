@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
+</head>
+<body>
+
+<!-- https://flatpickr.js.org/examples/ -->
+	<input type="text" class="aa">
+	
+	<script>
+	$(function(){
+		$(".aa").flatpickr({
+			minDate: "today",
+			mode: "range",
+				inline: true
+		});
+		
+	});
+	
+	</script>
+
+</body>
+</html>

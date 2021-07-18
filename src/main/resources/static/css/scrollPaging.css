@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+body {
+    padding: 30px;
+    background-color: gray;
+}
+
+#container {
+    margin: 0px auto;
+    width: 500px;
+}
+
+#list {
+    padding: 0px;
+}
+
+#list li {
+    height: 250px;
+    line-height: 250px;
+    display: block;
+    background-color: aliceblue;
+    margin-bottom: 15px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 3em;
+}
+
+#msg-loading {
+    background-color: honeydew;
+    color: red;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.fade-in {
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 0.5s;
+}
+
+.fade-out {
+    opacity: 0;
+    animation-name: fadeOutOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 0.5s;
+}
+
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOutOpacity {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

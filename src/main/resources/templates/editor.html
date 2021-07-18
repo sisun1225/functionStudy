@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>에디터 테스트</title>
+
+<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css">
+
+
+</head>
+<body>
+<br><br>
+<div id="editor"></div>
+
+<button id="updateButton" type="button"><b>등 록</b></button>
+<br>
+<button onclick ="View();">부르기</button>
+
+<br>
+
+<div id="viewer" style="border : 2px solid red;"></div>
+
+<!-- https://ui.toast.com/ -->
+<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+
+<script>
+const content = [].join('\n');
+
+const edi = new toastui.Editor({
+	el: document.querySelector('#editor'),
+	previewStyle: 'vertical',
+	initialEdiType: "wysiwyg",
+	height:'500px',
+	initialValue:content
+});
+
+const viewer = new toastui.Editor.factory({
+	el: document.querySelector('#viewer'),
+	viewer:true,
+	height:'500px',
+    initialValue: content
+	
+});
+
+function View(){
+	viewer.setMarkdown(editor.getMarkdown());
+}
+
+
+$("#updateButton").click(function(){
+	 var data = {"postContents":edi.getHTML()};
+	 $.ajax({
+		url:"/Update",
+		data: data,
+		type: "post",
+		success: function(res) {
+			location.href="/basic?userID="+ param; 
+		}
+	 });  
+});
+
+
+</script>
+
+</body>
+</html>

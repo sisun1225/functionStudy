@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+aclass_detail
+<form action="adetail" method="post">
+아이디1:<input type="text" name="id1" th:value="${vo.id1}"><br>
+아이디2:<input type="text" name="id2" th:value="${vo.id2}"><br>
+이름:<input type="text" name="name" th:value="${vo.name}"><br>
+<input type="submit" value="수정">
+</form>
+</body>
+</html>

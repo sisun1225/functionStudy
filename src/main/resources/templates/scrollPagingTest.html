@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Scroll Paging Test</title>
+<link th:href="@{/css/scrollPaging.css}" rel="stylesheet">
+</head>
+<body>
+	<a href="http://yoonbumtae.com/?p=2858">코드 예제</a>
+	<a href="https://samsara1019.tistory.com/77">코드 설명</a>
+	<a href="https://armadillo-dev.github.io/javascript/what-is-intersection-observer/">사용 예제</a>
+	
+	<div id="container">
+		<ul id="list">
+		
+		</ul>
+		<p id="msg-loading">로딩중</p>
+	</div>
+	
+	<script>
+		let currentPage = 1;
+		
+		const DATA_PER_PAGE = 5;
+		const lastPage = 5;
+		
+		const msgLoading = document.getElementById("msg-loading");
+		
+		function addData(currentPage){
+			const $list = document.getElementById("list");
+			
+			for(let i=1; i<=DATA_PER_PAGE; i++) {
+				const $li = document.createElement("li");
+				$li.textContent = `${currentPage}페이지 ${i}번째 데이터`;
+				$li.classList.add("fade-in");
+				$list.appendChild($li);
+			}
+		}
+		
+		function observeLastChild(intersectionOberver){
+			const listChildren = document.querySelectorAll("#list li");
+			listChildren.forEach(function(elt) {
+				
+				if(!elt.nextSibling && currentPage < lastPage){
+					intersectionOberver.observe(elt);
+				}else if(currentPage >= lastPage){
+					intersectionOberver.disconnect();
+					msgLoading.textContent = "마지막 페이지입니다.";
+				}
+			})
+		}
+		
+		const observerOption = {
+				root: null,				// 관측대상을 감싸는 element, null이면 viewport
+				rootMargin: '0px',		// root 요소를 감싸는 margin
+				threshold: 0.5			// (0 ~ 1.0) root와 관측 대상이 몇 % 교차했을 때 callback 실행할 것인지
+		}
+		
+		// intersectionObserver 인스턴스 생성
+		const io = new IntersectionObserver(func, observerOption);
+		
+		function func(entries, observer){
+			entries.forEach(function(entry) {
+				
+				// 관측 대상이 뷰포트와 50% 교차되었으면
+				if(entry.isIntersecting){
+					msgLoading.classList.add("fade-in");
+					
+					// 다음 데이터 가져오기
+					// 자연스러운 연출을 위해 setTimeout 사용
+					setTimeout(function() {
+						addData(++currentPage);
+						observer.unobserve(entry.target);
+						observeLastChild(observer);
+						
+						msgLoading.classList.remove("fade-in");
+					}, 1000)
+				}
+			})
+		}
+		
+		addData(currentPage);	// 초기 데이터
+		observeLastChild(io);	// 마지막 요소 관측
+	</script>
+
+</body>
+</html>

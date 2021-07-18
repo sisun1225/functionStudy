@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>aclass_list</h1>
+<ul>
+  <li th:each="vo:${alist}" >
+     <a th:href="|adetail?id1=${vo.id1}&id2=${vo.id2}|" th:text="${vo.name}"></a>
+     <button th:onclick="'javascript:call(' + ${vo.id1} + ',' +  ${vo.id2} + ')'">삭제</button>
+ 
+  </li>
+</ul>
+<script>
+function call(id1, id2){
+	location.href= "delete?id1="+id1+"&id2="+id2; 
+}
+</script>
+</body>
+</html> 

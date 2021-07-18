@@ -65,13 +65,15 @@
 		
 		
 		<!-- 엑셀출력(poi라이브러리) -->
+		<!-- xssf를 사용하기위해서 ooxml을 추가해야한다 -->
 		<dependency>
-			<!-- xssf를 사용하기위해서 ooxml을 추가해야한다 -->
 	   		<groupId>org.apache.poi</groupId>
 	  		<artifactId>poi-ooxml</artifactId>
 	  		<version>3.6</version>
 		</dependency>
 		<!-- 엑셀출력 끝 -->
+		
+		
 		<!-- XSSF는 엑셀 2007이후 xlsx로 출력하기위함 속도는 느리지만 많은 데이터 사용가능 -->
 		<!-- HSSF보다는 최근의 excel은 대부분 xlsx를 사용하므로 XSSF를 사용. -->
 		 
@@ -82,6 +84,13 @@
 			<version>3.15</version>
 			</dependency> 
 			-->
+			
+			
+		<!--결제 정기결제 용 코드-->
+		<dependency>
+           <groupId>com.google.code.gson</groupId>
+           <artifactId>gson</artifactId>
+		</dependency>
 			
 		
 		

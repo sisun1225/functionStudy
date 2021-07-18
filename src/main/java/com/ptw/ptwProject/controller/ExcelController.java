@@ -27,13 +27,14 @@ public class ExcelController {
 	
  
 	@RequestMapping("/excelTest")
-	public void adminList(Model model, HttpServletRequest request) {
+	public void adminList(Model model, HttpServletRequest request, HttpSession session) {
 		List<ExportExcel> result = excelservice.selectAll();
+		
 		model.addAttribute("excellist", result);
+		session.setAttribute("excellist", result);
 	}
 
-	@Autowired
-	ExcelRepository excelrepository;
+
 	
 	//강의내역 엑셀다운로드
 		@RequestMapping("/exceldownload")
@@ -43,7 +44,7 @@ public class ExcelController {
 			OutputStream out = null;
 
 			try {
-				List<ExportExcel> list = (List<ExportExcel>) excelrepository.findAll();
+				List<ExportExcel> list = (List<ExportExcel>) session.getAttribute("excellist");
 
 				XSSFWorkbook workbook = excelservice.listExcelDownload(list);
 
